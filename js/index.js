@@ -2,11 +2,15 @@ const oldPinInputs = document.querySelectorAll('.old-pin-digit');
 const newPinInputs = document.querySelectorAll('.new-pin-digit');
 let oldPinCode = ''
 let newPinCode = ''
-
+const oldPinBlock = document.getElementById('oldPin')
+const newPinBlock = document.getElementById('newPin')
 
 function updateOldPinCode() {
   oldPinCode = Array.from(oldPinInputs).map(input => input.value).join('');
-  console.log(oldPinCode);
+  if(oldPinCode.length === 4) {
+    oldPinBlock.style.display = 'none'
+    newPinBlock.style.display = 'block'
+  }
 }
 
 function updateNewPinCode() {
@@ -96,12 +100,14 @@ function shuffleNewArray() {
   resultArray.push('delete')
   for (let i = 0; i < resultArray.length; i++) {
     if (resultArray[i] === null) {
-      numbers.innerHTML += `<button></button>`
+      numbers.innerHTML += `<button class="button"></button>`
     }
     if (resultArray[i] === 'delete') {
-      numbers.innerHTML += `<button onclick="removeLastDigitFromNewPin()">${resultArray[i]}</button>`
+      numbers.innerHTML += `<button onclick="removeLastDigitFromNewPin()" class="button">
+                               <img src="../assets/img/delete.svg">
+                            </button>`
     } else if (resultArray[i] !== null && resultArray[i] !== 'delete') {
-      numbers.innerHTML += `<button onclick="appendToNewPin(${resultArray[i]})">${resultArray[i]}</button>`
+      numbers.innerHTML += `<button onclick="appendToNewPin(${resultArray[i]})" class="button">${resultArray[i]}</button>`
     }
   }
 }

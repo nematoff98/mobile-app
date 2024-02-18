@@ -10,41 +10,41 @@
 </head>
 <body class="light uzcard">
 <div class="pin-container">
-    <div class="old-pin">
-      <img
-        src="./assets/img/Uzcard_Logo.png"
-        alt=""
-        class="main__logo"
-      >
-        <div class="old-pin-inputs">
-          <div class="old-pin-inputs__input">
+  <img
+    src="./assets/img/Uzcard_Logo.png"
+    alt=""
+    class="main__logo"
+  >
+    <div id="oldPin" class="pin old-pin">
+        <div class="pin-inputs">
+          <div class="pin-inputs__input">
             <input
               type="text"
-              class="old-pin-digit"
+              class="pin-digit old-pin-digit"
               inputmode='none'
               oninput="validateSingleDigitInput(event)"
             >
           </div>
-          <div class="old-pin-inputs__input">
+          <div class="pin-inputs__input">
             <input
                 type="text"
-                class="old-pin-digit"
+                class="pin-digit old-pin-digit"
                 inputmode='none'
                 oninput="validateSingleDigitInput(event)"
             >
           </div>
-          <div class="old-pin-inputs__input">
+          <div class="pin-inputs__input">
             <input
                 type="text"
-                class="old-pin-digit"
+                class="pin-digit old-pin-digit"
                 inputmode='none'
                 oninput="validateSingleDigitInput(event)"
             >
           </div>
-          <div class="old-pin-inputs__input">
+          <div class="pin-inputs__input">
             <input
                 type="text"
-                class="old-pin-digit"
+                class="pin-digit old-pin-digit"
                 inputmode='none'
                 oninput="validateSingleDigitInput(event)"
             >
@@ -52,76 +52,76 @@
         </div>
         <div id="old-pin-keyboard" class="pin-keyboard"></div>
     </div>
-    <div class="new-pin">
-        <div class="new-pin-inputs">
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
+    <div id="newPin" class="pin new-pin">
+      <div class="pin-inputs" style="margin-top: -75px; margin-bottom: 10%" >
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
         </div>
-        <div class="pin-inputs">
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
-            <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-            </div>
-              <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-              </div>
-          <div class="old-pin-inputs__input">
-            <input
-                type="text"
-                class="new-pin-digit"
-                inputmode='none'
-                oninput="validateSingleDigitInput(event)"
-            >
-          </div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
         </div>
-        <div id="new-pin-keyboard"></div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+      </div>
+      <div class="pin-inputs" style="margin-bottom: 10%;">
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+        <div class="pin-inputs__input">
+          <input
+            type="text"
+            class="pin-digit new-pin-digit"
+            inputmode='none'
+            oninput="validateSingleDigitInput(event)"
+          >
+        </div>
+      </div>
+      <div id="new-pin-keyboard" class="pin-keyboard"></div>
     </div>
 </div>
 <script src="./js/index.js"></script>
