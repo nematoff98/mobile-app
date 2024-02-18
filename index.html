@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/pin-area.css">
+    <link rel="stylesheet" href="./css/numbers.css">
+</head>
+<body class="light uzcard">
+<div class="pin-container">
+    <div class="old-pin">
+      <img
+        src="./assets/img/Uzcard_Logo.png"
+        alt=""
+        class="main__logo"
+      >
+        <div class="old-pin-inputs">
+          <div class="old-pin-inputs__input">
+            <input
+              type="text"
+              class="old-pin-digit"
+              inputmode='none'
+              oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="old-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="old-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="old-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+        </div>
+        <div id="old-pin-keyboard" class="pin-keyboard"></div>
+    </div>
+    <div class="new-pin">
+        <div class="new-pin-inputs">
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+        </div>
+        <div class="pin-inputs">
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+            <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+            </div>
+              <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+              </div>
+          <div class="old-pin-inputs__input">
+            <input
+                type="text"
+                class="new-pin-digit"
+                inputmode='none'
+                oninput="validateSingleDigitInput(event)"
+            >
+          </div>
+        </div>
+        <div id="new-pin-keyboard"></div>
+    </div>
+</div>
+<script src="./js/index.js"></script>
+</body>
+</html>

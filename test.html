@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .pin-container {
+            text-align: center;
+        }
+
+        .pin-inputs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .pin-digit {
+            font-size: 24px;
+            width: 40px;
+            margin: 0 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #keyboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div class="pin-container">
+    <div class="pin-inputs">
+        <input type="text" class="pin-digit" readonly>
+        <input type="text" class="pin-digit" readonly>
+        <input type="text" class="pin-digit" readonly>
+        <input type="text" class="pin-digit" readonly>
+    </div>
+    <div id="keyboard"></div>
+</div>
+<script>
+  const pinInputs = document.querySelectorAll('.pin-digit');
+
+  function appendToPin(number) {
+    const emptyInput = Array.from(pinInputs).find(input => input.value === '');
+    if (emptyInput) {
+      emptyInput.value = number;
+    }
+  }
+
+  // changeOrder()
+
+  function removeLastDigit() {
+    const lastInput = Array.from(pinInputs).reverse().find(input => input.value !== '');
+    if (lastInput) {
+      lastInput.value = '';
+    }
+  }
+
+  function shuffleArray() {
+    const resultArray = []
+    const numbers = document.getElementById('keyboard')
+    do {
+      const number = Math.floor(Math.random() * 10)
+      if (!resultArray.includes(number)) resultArray.push(number)
+    } while (resultArray.length < 10)
+
+    resultArray.splice(9, 0, null)
+    resultArray.push('delete')
+
+    console.log(resultArray);
+
+    for (let i = 0; i < resultArray.length; i++) {
+      if(resultArray[i] === null) {
+        numbers.innerHTML += `<button></button>`
+      }
+      if (resultArray[i] === 'delete') {
+        numbers.innerHTML += `<button onclick="removeLastDigit()">${resultArray[i]}</button>`
+      }
+      else if(resultArray[i] !== null && resultArray[i] !== 'delete') {
+        numbers.innerHTML += `<button onclick="appendToPin(${resultArray[i]})">${resultArray[i]}</button>`
+      }
+    }
+  }
+
+  shuffleArray()
+
+
+</script>
+</body>
+</html>

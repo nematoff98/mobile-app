@@ -1,0 +1,182 @@
+.pin-keyboard button {
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 40px !important;
+    background: transparent;
+    transition: .1s all;
+    position: relative;
+}
+
+.pin-keyboard button:nth-child(1):before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 1px;
+    right: 0;
+    top: 0;
+    background: #153672;
+}
+
+.pin-keyboard button:nth-child(1):after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+    background: #153672;
+}
+.pin-keyboard button:nth-child(2):after {
+        position: absolute;
+        content: '';
+        height: 1px;
+    background: #153672;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+}
+
+.pin-keyboard button:nth-child(3):before {
+    position: absolute;
+    content: '';
+    height: 100%;background: #153672;
+    width: 1px;
+    left: 0;
+    top: 0;
+}
+
+.pin-keyboard button:nth-child(3):after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100%;background: #153672;
+    left: 0;
+    bottom: 0;
+}
+
+.pin-keyboard button:nth-child(4):after, .pin-keyboard button:nth-child(7):after {
+    position: absolute;
+    content: '';background: #153672;
+    height: 100%;
+    width: 1px;
+    right: 0;
+    top: 0;
+}
+.pin-keyboard button:nth-child(4):before, .pin-keyboard button:nth-child(7):before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100%;
+    left: 0;background: #153672;
+    bottom: 0;
+}
+
+.pin-keyboard button:nth-child(5):before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100%;background: #153672;
+    left: 0;
+    bottom: 0;
+}
+
+.pin-keyboard button:nth-child(6):before, .pin-keyboard button:nth-child(9):before {
+    position: absolute;
+    content: '';
+    height: 100%;background: #153672;
+    width: 1px;
+    left: 0;
+    top: 0;
+}
+
+.pin-keyboard button:nth-child(6):after, .pin-keyboard button:nth-child(9):after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 100%;background: #153672;
+    left: 0;
+    bottom: 0;
+}
+
+.pin-keyboard button:nth-child(8):before {
+    position: absolute;
+    content: '';
+    height: 1px;background: #153672;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.pin-keyboard button:nth-child(10):before {
+    position: absolute;
+    content: '';
+    height: 100%;background: #153672;
+    width: 1px;
+    right: 0;
+    margin-left: 2px;
+    top: 0;
+}
+
+.pin-keyboard button:nth-child(12):before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 1px;background: #153672;
+    left: 0;
+    top: 0;
+}
+
+.pin-keyboard button:active {
+    transform: scale(0.97);
+}
+
+
+.light .old-pin .pin-keyboard {
+    width: 100%;
+    max-height: 35%;
+    color: #153672;
+    flex-grow: 1;
+    margin-top: auto;
+}
+.pin-keyboard button:nth-child(1):before {
+    background-image: linear-gradient(to top, #fff, rgba(0, 0, 0, 0)) !important;
+}
+.light .old-pin .pin-keyboard:nth-child(1):after {
+    background-image: linear-gradient(to left, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(2):after {
+    background: #fff;
+}
+.light .old-pin .pin-keyboard:nth-child(3):before {
+    background-image: linear-gradient(to top, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(3):after {
+    background-image: linear-gradient(to right, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(4):after, .light .old-pin .pin-keyboard:nth-child(7):after {
+    background: #fff;
+}
+.light .old-pin .pin-keyboard:nth-child(4):before, .light .old-pin .pin-keyboard:nth-child(7):before {
+    background-image: linear-gradient(to left, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(5):before {
+    background: #fff;
+}
+.light .old-pin .pin-keyboard:nth-child(6):before, .light .old-pin .pin-keyboard:nth-child(9):before {
+    background: #fff;
+}
+.light .old-pin .pin-keyboard:nth-child(6):after, .light .old-pin .pin-keyboard:nth-child(9):after {
+    background-image: linear-gradient(to right, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(8):before {
+    background: #fff;
+}
+.light .old-pin .pin-keyboard:nth-child(10):before {
+    background-image: linear-gradient(to bottom, #fff, rgba(0, 0, 0, 0));
+}
+.light .old-pin .pin-keyboard:nth-child(12):before {
+    background-image: linear-gradient(to bottom, #fff, rgba(0, 0, 0, 0));
+}

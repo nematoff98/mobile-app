@@ -1,0 +1,61 @@
+@import "variables.css";
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main__logo {
+    width: 20%;
+}
+
+.light.uzcard {
+    background: linear-gradient(#fff, var(--main-color), var(--main-blue)) no-repeat;
+}
+.light.uzum {
+    background: linear-gradient(#fff, var(--main-color), var(--uzum-color)) no-repeat;
+}
+.light.ipakyoli {
+    background: linear-gradient(#fff, var(--main-color), var(--ipak-color)) no-repeat;
+}
+
+.dark.uzcard {
+    background: linear-gradient(#fff, var(--main-blue), var(--main-blue)) no-repeat;
+}
+
+.dark.uzum {
+    background: linear-gradient(#fff, var(--uzum-color), var(--uzum-color)) no-repeat;
+}
+.dark.ipakyoli {
+    background: linear-gradient(#fff, var(--ipak-color), var(--ipak-color)) no-repeat;
+}
+
+.pin-container {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.old-pin .pin-keyboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.old-pin {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.new-pin {
+    display: none;
+}
