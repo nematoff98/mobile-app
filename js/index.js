@@ -28,9 +28,15 @@ const PLACEHOLDERS = {
 function getLang() {
   const urlParams = new URLSearchParams(window.location.search);
   const lang = urlParams.get('lang');
-  placeholderOldPin.innerText = PLACEHOLDERS[`ENTER_EXISTING_PING_${lang}`]
-  placeholderNewPin.innerText = PLACEHOLDERS[`NEW_PIN_${lang}`]
-  placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_${lang}`]
+  if(lang) {
+    placeholderOldPin.innerText = PLACEHOLDERS[`ENTER_EXISTING_PING_${lang}`]
+    placeholderNewPin.innerText = PLACEHOLDERS[`NEW_PIN_${lang}`]
+    placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_${lang}`]
+  } else {
+    placeholderOldPin.innerText = PLACEHOLDERS[`ENTER_EXISTING_PING_uz`]
+    placeholderNewPin.innerText = PLACEHOLDERS[`NEW_PIN_uz`]
+    placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_uz`]
+  }
 }
 
 getLang()
