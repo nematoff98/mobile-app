@@ -4,12 +4,46 @@ let oldPinCode = ''
 let newPinCode = ''
 const oldPinBlock = document.getElementById('oldPin')
 const newPinBlock = document.getElementById('newPin')
+const backIcon = document.getElementById('backIcon')
+const nextIcon = document.getElementById('nextIcon')
+const placeholderOldPin = document.getElementById('placeholderOldPin')
+const placeholderNewPin = document.getElementById('placeholderNewPin')
+const placeholderNewRepeatPin = document.getElementById('placeholderNewRepeatPin')
+const confirmInput = document.getElementsByClassName('new-pin-digit-confirm')
+const PLACEHOLDERS = {
+  INVALID_PIN_ENTER_ru: 'Введена неверная пин',
+  ENTER_EXISTING_PING_ru: 'Введите текущий пин',
+  NEW_PIN_ru: 'Введите новый пин',
+  REPEAT_NEW_PIN_ru: 'Повторите новый пин',
+  ENTER_EXISTING_PING_uz: 'Mavjud pinni kiriting',
+  NEW_PIN_uz: 'Yangi pinni kiriting',
+  REPEAT_NEW_PIN_uz: 'Yangi pinni qayta kiriting',
+  INVALID_PIN_ENTER_uz: 'Noto\'g\'ri pin kiritldi',
+  INVALID_PIN_ENTER_en: 'Invalid pin entered',
+  ENTER_EXISTING_PING_en: 'Enter your current pin',
+  NEW_PIN_en: 'Enter a new pin',
+  REPEAT_NEW_PIN_en: 'Repeat new pin',
+}
+
+function getLang() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lang = urlParams.get('lang');
+  placeholderOldPin.innerText = PLACEHOLDERS[`ENTER_EXISTING_PING_${lang}`]
+  placeholderNewPin.innerText = PLACEHOLDERS[`NEW_PIN_${lang}`]
+  placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_${lang}`]
+}
+
+getLang()
 
 function updateOldPinCode() {
   oldPinCode = Array.from(oldPinInputs).map(input => input.value).join('');
   if(oldPinCode.length === 4) {
     oldPinBlock.style.display = 'none'
     newPinBlock.style.display = 'block'
+    backIcon.style.display = 'block'
+  }
+  if(oldPinCode.length < 4) {
+    nextIcon.style.display = 'none'
   }
 }
 
@@ -81,7 +115,9 @@ function shuffleOldArray() {
       numbers.innerHTML += `<button></button>`
     }
     if (resultArray[i] === 'delete') {
-      numbers.innerHTML += `<button onclick="removeLastDigitFromOldPin()">${resultArray[i]}</button>`
+      numbers.innerHTML += `<button onclick="removeLastDigitFromOldPin()" class="button">
+                               <img src="./assets/img/delete.svg">
+                            </button>`
     } else if (resultArray[i] !== null && resultArray[i] !== 'delete') {
       numbers.innerHTML += `<button onclick="appendToOldPin(${resultArray[i]})">${resultArray[i]}</button>`
     }
@@ -104,7 +140,7 @@ function shuffleNewArray() {
     }
     if (resultArray[i] === 'delete') {
       numbers.innerHTML += `<button onclick="removeLastDigitFromNewPin()" class="button">
-                               <img src="../assets/img/delete.svg">
+                               <img src="./assets/img/delete.svg">
                             </button>`
     } else if (resultArray[i] !== null && resultArray[i] !== 'delete') {
       numbers.innerHTML += `<button onclick="appendToNewPin(${resultArray[i]})" class="button">${resultArray[i]}</button>`
@@ -115,6 +151,19 @@ function shuffleNewArray() {
 shuffleOldArray()
 shuffleNewArray()
 
-function changeOldPin(event) {
-  console.log('logged');
+function backOldPin() {
+  newPinCode = ''
+  oldPinBlock.style.display = 'block'
+  newPinBlock.style.display = 'none'
+  backIcon.style.display = 'none'
+  nextIcon.style.display = 'block'
+}
+
+function toNewPin() {
+  if(oldPinCode.length === 4) {
+    oldPinBlock.style.display = 'none'
+    newPinBlock.style.display = 'block'
+    backIcon.style.display = 'block'
+    nextIcon.style.display = 'none'
+  }
 }

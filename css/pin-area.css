@@ -1,7 +1,7 @@
 .pin-inputs__input {
     background: transparent;
     position: relative;
-    width: 100%;
+    width: 60%;
     height: 60px;
     margin: 5px;
     font-size: 40px;
@@ -31,13 +31,22 @@ input {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    margin-bottom: 20%;
+    /*margin-bottom: 20%;*/
     flex-grow: 1;
     max-width: 100%;
-    padding: 0 100px;
     position: relative;
     z-index: 1000;
     /*margin-bottom: 30px;*/
+}
+
+.pin-aa {
+    max-width: 75%;
+    padding: 0 100px;
+    margin: 0 auto 20%;
+}
+
+.pin-placeholder {
+    margin-top: 20px;
 }
 
 .pin-input {
@@ -51,7 +60,7 @@ input {
 .pin-inputs__input:nth-child(1):after {
     position: absolute;
     content: '';
-    height: 1.5px;
+    height: 3.5px;
     width: 100%;
     left: 0;
     bottom: -15px;
@@ -65,7 +74,7 @@ input {
 .pin-inputs__input:nth-child(2):after, .pin-inputs__input:nth-child(3):after {
     position: absolute;
     content: '';
-    height: 1.5px;
+    height: 3.5px;
     width: 100%;
     left: 0;
     bottom: -15px;
@@ -75,7 +84,7 @@ input {
 .pin-inputs__input:nth-child(4):after {
     position: absolute;
     content: '';
-    height: 1.5px;
+    height: 3.5px;
     width: 100%;
     left: 0;
     bottom: -15px;
