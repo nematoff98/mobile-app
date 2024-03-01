@@ -122,7 +122,7 @@
         <div id="placeholderNewPin" class="pin-placeholder"></div>
       </div>
       <div class="pin-aa">
-        <div class="pin-inputs" id="confirmPins">
+        <div class="pin-inputs confirm-pin-inputs" id="confirmPins">
           <div class="pin-inputs__input">
             <input
               type="text"
@@ -155,8 +155,9 @@
               oninput="validateSingleDigitInput(event)"
             >
           </div>
+          <button onclick="submit()" id="submit"></button>
         </div>
-        <div id="placeholderNewRepeatPin" class="pin-placeholder"></div>
+        <div id="placeholderNewRepeatPin" class="pin-placeholder confirm-pin-placeholder"></div>
       </div>
       <div id="new-pin-keyboard" class="pin-keyboard"></div>
     </div>

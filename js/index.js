@@ -12,6 +12,8 @@ const oldPinBlock = document.getElementById('oldPin')
 const newPinBlock = document.getElementById('newPin')
 const successBlock = document.getElementById('successBlock')
 const errorBlock = document.getElementById('errorBlock')
+const confirmPinsBlock = document.getElementById('confirmPins')
+const submitBlock = document.getElementById('submit')
 const successMessageBlock = document.getElementById('successMessageBlock')
 const backIcon = document.getElementById('backIcon')
 const nextIcon = document.getElementById('nextIcon')
@@ -24,14 +26,20 @@ const PLACEHOLDERS = {
   ENTER_EXISTING_PING_ru: 'Введите текущий пин',
   NEW_PIN_ru: 'Введите новый пин',
   REPEAT_NEW_PIN_ru: 'Повторите новый пин',
+  INVALID_CONFIRM_PIN_ENTER_ru: 'Код подтверждения недействителен.',
+  SUBMIT_ru: 'Отправить',
   ENTER_EXISTING_PING_uz: 'Mavjud pinni kiriting',
   NEW_PIN_uz: 'Yangi pinni kiriting',
   REPEAT_NEW_PIN_uz: 'Yangi pinni qayta kiriting',
   INVALID_PIN_ENTER_uz: 'Noto\'g\'ri pin kiritldi',
+  INVALID_CONFIRM_PIN_ENTER_uz: 'Tasdiqlash kodi noto\'g\'ri',
+  SUBMIT_uz: 'Yuborish',
   INVALID_PIN_ENTER_en: 'Invalid pin entered',
   ENTER_EXISTING_PING_en: 'Enter your current pin',
   NEW_PIN_en: 'Enter a new pin',
   REPEAT_NEW_PIN_en: 'Repeat new pin',
+  INVALID_CONFIRM_PIN_ENTER_en: 'The verification code is invalid',
+  SUBMIT_en: 'Submit'
 }
 
 function getLang() {
@@ -62,17 +70,51 @@ function updateOldPinCode() {
   }
 }
 
+const submit = () => {
+  if (newPinCode.length === 8) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    let firstHalf = newPinCode.substring(0, 4);
+    let secondHalf = newPinCode.substring(4, 8);
+
+    if (firstHalf === secondHalf) {
+      // Agar birinchi 4 ta raqam va oxirgi 4 ta raqam bir biriga teng bo'lsa
+      showLoader();
+      if(lang) {
+        placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_${lang}`]
+      } else {
+        placeholderNewRepeatPin.innerText = PLACEHOLDERS[`REPEAT_NEW_PIN_uz`]
+      }
+      placeholderNewRepeatPin.classList.remove('error')
+      confirmPinsBlock.classList.remove('error')
+      setTimeout(() => {
+        hideLoader();
+        successBlock.style.display = 'none';
+        successBlock.remove()
+        successMessageBlock.style.display = 'flex';
+      }, 1000);
+    } else {
+      // Agar tengmasa, xatolikni ko'rsatish yoki qo'shimcha amallar
+      if(lang) {
+        placeholderNewRepeatPin.innerText = PLACEHOLDERS[`INVALID_CONFIRM_PIN_ENTER_${lang}`]
+      } else {
+        placeholderNewRepeatPin.innerText = PLACEHOLDERS[`INVALID_CONFIRM_PIN_ENTER_uz`]
+      }
+      placeholderNewRepeatPin.classList.add('error')
+      confirmPinsBlock.classList.add('error')
+    }
+  }
+}
+
 function updateNewPinCode() {
   newPinCode = Array.from(newPinInputs).map(input => input.value).join('');
-  console.log(newPinCode);
+  const searchParams = new URLSearchParams(window.location.search);
+  let lang = searchParams.get("lang") || 'uz';
   if(newPinCode.length === 8) {
-    showLoader()
-    setTimeout(() => {
-      hideLoader()
-      successBlock.style.display = 'none'
-      successMessageBlock.style.display = 'flex'
-    }, 1000)
+    submitBlock.style.display = 'block'
+    submitBlock.innerText = PLACEHOLDERS[`SUBMIT_${lang}`]
   }
+  if(newPinCode.length < 8) submitBlock.style.display = 'none'
 }
 function appendToOldPin(number) {
   const emptyInput = Array.from(oldPinInputs).find(input => input.value === '');
@@ -206,8 +248,8 @@ function validateSingleDigitInput(event) {
 }
 
 function areAllInputsFilled() {
-  var inputFields = document.querySelectorAll(".pin-inputs__input");
-  for (var i = 0; i < inputFields.length; i++) {
+  let inputFields = document.querySelectorAll(".pin-inputs__input");
+  for (let i = 0; i < inputFields.length; i++) {
     if (inputFields[i].value.trim() === "") {
       return false;
     }
@@ -215,7 +257,7 @@ function areAllInputsFilled() {
   return true;
 }
 
-function showLoader() {
+function showLoader(){
   document.getElementById("loader").style.display = "block";
 }
 
@@ -246,9 +288,11 @@ function updateLogoImage() {
   let queryId = searchParams.get('id')
 
   successMessageBlock.style.display = 'none'
+  submitBlock.style.display = 'none'
 
   if(!queryId) {
     successBlock.style.display = 'none'
+    successBlock.remove()
     errorBlock.style.display = 'flex'
   } else {
     successBlock.style.display = 'block'

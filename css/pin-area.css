@@ -94,3 +94,31 @@ input {
             rgba(0, 0, 0, 0)
     );
 }
+
+.confirm-pin-inputs.error input {
+    color:  var(--error-color)!important;
+}
+
+.confirm-pin-inputs.error .pin-inputs__input:nth-child(1):after {
+    background-image: linear-gradient(
+            to left,
+            var(--error-color),
+            rgba(0, 0, 0, 0)
+    );
+}
+
+.confirm-pin-inputs.error .pin-inputs__input:nth-child(2):after, .confirm-pin-inputs.error .pin-inputs__input:nth-child(3):after {
+    background: var(--error-color);
+}
+
+.confirm-pin-inputs.error .pin-inputs__input:nth-child(4):after {
+    background-image: linear-gradient(
+            to right,
+            var(--error-color),
+            rgba(0, 0, 0, 0)
+    );
+}
+
+.confirm-pin-placeholder.error {
+    color: var(--error-color);
+}
