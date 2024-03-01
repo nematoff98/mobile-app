@@ -1,15 +1,24 @@
+const PARTNERS = {
+  UZUM: 'uzum',
+  IPAKYOLI: 'ipakyoli',
+  UZCARD: 'uzcard'
+}
+
 const oldPinInputs = document.querySelectorAll('.old-pin-digit');
 const newPinInputs = document.querySelectorAll('.new-pin-digit');
 let oldPinCode = ''
 let newPinCode = ''
 const oldPinBlock = document.getElementById('oldPin')
 const newPinBlock = document.getElementById('newPin')
+const successBlock = document.getElementById('successBlock')
+const errorBlock = document.getElementById('errorBlock')
+const successMessageBlock = document.getElementById('successMessageBlock')
 const backIcon = document.getElementById('backIcon')
 const nextIcon = document.getElementById('nextIcon')
 const placeholderOldPin = document.getElementById('placeholderOldPin')
 const placeholderNewPin = document.getElementById('placeholderNewPin')
 const placeholderNewRepeatPin = document.getElementById('placeholderNewRepeatPin')
-const confirmInput = document.getElementsByClassName('new-pin-digit-confirm')
+let isError = false
 const PLACEHOLDERS = {
   INVALID_PIN_ENTER_ru: 'Введена неверная пин',
   ENTER_EXISTING_PING_ru: 'Введите текущий пин',
@@ -56,6 +65,14 @@ function updateOldPinCode() {
 function updateNewPinCode() {
   newPinCode = Array.from(newPinInputs).map(input => input.value).join('');
   console.log(newPinCode);
+  if(newPinCode.length === 8) {
+    showLoader()
+    setTimeout(() => {
+      hideLoader()
+      successBlock.style.display = 'none'
+      successMessageBlock.style.display = 'flex'
+    }, 1000)
+  }
 }
 function appendToOldPin(number) {
   const emptyInput = Array.from(oldPinInputs).find(input => input.value === '');
@@ -89,21 +106,21 @@ function removeLastDigitFromNewPin() {
   }
 }
 
-function validateSingleDigitInput(event) {
-  var inputElement = event.target;
-  var inputValue = inputElement.value;
-
-  // Faqat bitta raqam qabul qilish
-  var numericValue = inputValue.replace(/\D/g, '');
-
-  // Raqam uzunligini tekshirish va boshqa belgilarni o'chirish
-  if (numericValue.length > 1) {
-    numericValue = numericValue.substring(0, 1);
-  }
-
-  // O'zgarmagan qiymatni inputga tiklash
-  inputElement.value = numericValue;
-}
+// function validateSingleDigitInput(event) {
+//   var inputElement = event.target;
+//   var inputValue = inputElement.value;
+//
+//   // Faqat bitta raqam qabul qilish
+//   var numericValue = inputValue.replace(/\D/g, '');
+//
+//   // Raqam uzunligini tekshirish va boshqa belgilarni o'chirish
+//   if (numericValue.length > 1) {
+//     numericValue = numericValue.substring(0, 1);
+//   }
+//
+//   // O'zgarmagan qiymatni inputga tiklash
+//   inputElement.value = numericValue;
+// }
 
 function shuffleOldArray() {
   const resultArray = []
@@ -173,3 +190,88 @@ function toNewPin() {
     nextIcon.style.display = 'none'
   }
 }
+
+function validateSingleDigitInput(event) {
+  if (areAllInputsFilled()) {
+    showLoader();
+
+    disableInputFields();
+
+    setTimeout(function () {
+      hideLoader();
+
+      enableInputFields();
+    }, 2000);
+  }
+}
+
+function areAllInputsFilled() {
+  var inputFields = document.querySelectorAll(".pin-inputs__input");
+  for (var i = 0; i < inputFields.length; i++) {
+    if (inputFields[i].value.trim() === "") {
+      return false;
+    }
+  }
+  return true;
+}
+
+function showLoader() {
+  document.getElementById("loader").style.display = "block";
+}
+
+function hideLoader() {
+  document.getElementById("loader").style.display = "none";
+}
+
+function disableInputFields() {
+  var inputFields = document.querySelectorAll(".pin-digit");
+  inputFields.forEach(function (input) {
+    input.disabled = true;
+  });
+}
+
+function enableInputFields() {
+  var inputFields = document.querySelectorAll(".pin-digit");
+  inputFields.forEach(function (input) {
+    input.disabled = false;
+  });
+}
+
+
+//updateLogoImage
+function updateLogoImage() {
+  // URL manzilidan ilovani nomini olish
+  const searchParams = new URLSearchParams(window.location.search);
+  let appName = searchParams.get("app") || PARTNERS.UZCARD;
+  let queryId = searchParams.get('id')
+
+  successMessageBlock.style.display = 'none'
+
+  if(!queryId) {
+    successBlock.style.display = 'none'
+    errorBlock.style.display = 'flex'
+  } else {
+    successBlock.style.display = 'block'
+    errorBlock.style.display = 'none'
+  }
+
+
+  // Ilovani nomiga asosan rasm manzilini aniqlash
+
+  const imagePath = `./assets/img/${PARTNERS[appName.toUpperCase()]}_Logo.png`;
+  // Logotip rasmining src atributini yangilash
+  const logoImage = document.getElementById("logoImage");
+  if (logoImage) {
+    logoImage.src = imagePath;
+  }
+  // Fon rangini yangilash
+  document.body.className = `light ${appName}`;
+}
+
+// Sahifani yuklashda funksiyani chaqirish
+window.onload = updateLogoImage;
+
+// URL manzilidagi o'zgarishlarni tinglash
+window.onpopstate = function () {
+  updateLogoImage();
+};

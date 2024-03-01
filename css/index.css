@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&display=swap');
 @import "variables.css";
+@import "loading.css";
 
 body {
     padding: 0;
@@ -90,4 +91,8 @@ body {
     position: absolute;
     right: 30px;
     top: 30px;
+}
+
+button {
+    touch-action: manipulation;
 }
